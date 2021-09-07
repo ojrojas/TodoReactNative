@@ -1,12 +1,12 @@
 import React from 'react';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Alert, Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {LoginState} from '../reducers/loginReducer';
 import {StackNavigationScreen} from '../stack/stack-navigation';
 import {AppStateTodo} from '../store/rootReducer';
 import {Login} from '../types/login.type';
-import {LoginUserAction} from '../actions/Login.actions';
+import {LoginUserAction} from '../actions/login.actions';
 import {connect} from 'react-redux';
 import {Controller, useForm} from 'react-hook-form';
 
@@ -18,7 +18,6 @@ const LoginScreen = (props: Props) => {
   } = useForm();
 
   const loginAction = (data: Login) => {
-    Alert.alert(`esta es la data: ${data.userName} - ${data.password}`);
     props.LoginUserAction(data);
   };
 

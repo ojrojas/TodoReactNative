@@ -6,11 +6,12 @@ import {
   LOGIN_SUCCESS,
 } from '../typesactions/login.typeactions';
 import {Dispatch} from 'react';
-import {ApiRequest} from '../services/api-request.services';
 import StorageService from '../services/storage.services';
+import {Alert} from 'react-native';
+import {ApiRequest} from '../services/api-request.services';
 
-const request = new ApiRequest();
 const urilogin = 'login';
+const api = new ApiRequest();
 
 export const LoginUser = (login: Login): AppActions => ({
   type: LOGIN,
@@ -31,8 +32,9 @@ export const LoginUserAction =
   (login: Login) =>
   async (dispatch: Dispatch<AppActions>): Promise<void> => {
     dispatch(LoginUser(login));
-    const response = await request.Post(urilogin, login);
+    const response = await api.Post(urilogin, login);
     if (response.isAxiosError) {
+      Alert.alert('Usuario y contraseña invalidos');
       dispatch(LoginError(response));
     } else {
       dispatch(LoginUserSuccess(response.data.auth_Token));

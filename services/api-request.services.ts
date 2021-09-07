@@ -1,7 +1,6 @@
 import axios, {AxiosInstance} from 'axios';
 import {route_azFunctions} from '../utils/route-azfunctions';
 import StorageService from './storage.services';
-
 export class ApiRequest {
   apiAxios: AxiosInstance;
   constructor() {
